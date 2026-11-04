@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile - Edge Lab</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <h1>Edge Lab</h1>
+  <p class="note">Virtual coins only. No real money is involved.</p>
+
+  <section>
+    <p>Logged in as <strong id="username">...</strong></p>
+    <p>Coin balance</p>
+    <p class="balance" id="balance">...</p>
+    <button id="logout" type="button">Log out</button>
+    <p><a href="/leaderboards.html">Leaderboards</a> &middot; <a href="/skill-vs-luck.html">Skill vs luck</a> &middot; <a href="/bankroll.html">Bankroll simulator</a> &middot; <a href="/calibration.html">Calibration game</a></p>
+  </section>
+
+  <section>
+    <h2>Coin history</h2>
+    <table>
+      <thead><tr><th>When</th><th>Type</th><th>Change</th><th>Balance</th></tr></thead>
+      <tbody id="history"></tbody>
+    </table>
+    <p id="empty" hidden>No transactions yet.</p>
+  </section>
+</main>
+<script src="/profile.js"></script>
+</body>
+</html>

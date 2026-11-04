@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bankroll simulator - Edge Lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    main.wide { max-width: 980px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.5rem 1rem; }
+    .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.6rem; margin: 1rem 0; }
+    .fact { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 0.5rem 0.7rem; }
+    .fact .v { font-size: 1.3rem; font-weight: bold; }
+    .fact .k { font-size: 0.8rem; color: #555; }
+    .bad .v { color: #b91c1c; }
+    .good .v { color: #15803d; }
+    .notes li { margin: 0.35rem 0; }
+    img.chart { width: 100%; max-width: 760px; display: block; margin: 0.8rem 0; border: 1px solid #e5e7eb; }
+    select, input { margin-top: 0.2rem; }
+  </style>
+</head>
+<body>
+<main class="wide">
+  <h1>Bankroll simulator</h1>
+  <p class="note">Virtual coins only. No real money is involved.</p>
+  <p><a href="/profile.html">&larr; Your profile</a> &middot; <a href="/calibration.html">Calibration game</a></p>
+
+  <section>
+    <h2>The bet</h2>
+    <p>One bet, repeated. Pick a preset, or describe your own. <strong>Win</strong> pays <em>odds</em> times your stake; <strong>lose</strong> costs your stake; whatever probability is left is a push (nothing happens, like a tie in Dice Duel).</p>
+    <form id="form">
+      <div class="grid">
+        <label>Preset <select id="preset"></select></label>
+        <label>Win chance (%) <input id="win" type="number" step="0.1" min="0" max="100" value="55" required></label>
+        <label>Lose chance (%) <input id="lose" type="number" step="0.1" min="0" max="100" value="45" required></label>
+        <label>Odds (pays X to 1) <input id="odds" type="number" step="0.1" min="0.1" max="1000" value="1" required></label>
+      </div>
+      <h2>How much to stake</h2>
+      <div class="grid">
+        <label>Strategy
+          <select id="strategy">
+            <option value="kelly">Kelly: a multiple of the Kelly fraction</option>
+            <option value="fraction">A fixed percentage of the bankroll</option>
+            <option value="flat">A flat number of coins each time</option>
+          </select>
+        </label>
+        <label><span id="value-label">Multiple of Kelly (1 = full, 0.5 = half)</span> <input id="value" type="number" step="0.05" min="0.01" value="1" required></label>
+        <label>Number of bets <input id="bets" type="number" min="1" max="5000" value="200" required></label>
+        <label>Simulated paths <input id="paths" type="number" min="1" max="20000" value="2000" required></label>
+        <label>Starting bankroll <input id="start" type="number" min="1" value="1000" required></label>
+        <label>Count as ruin at (% of start) <input id="ruin" type="number" step="1" min="0" max="99" value="10" required></label>
+        <label>Profit goal (optional) <input id="target" type="number" min="1" placeholder="stop at this bankroll"></label>
+        <label>Seed (optional) <input id="seed" type="number" min="0" placeholder="blank = new random run"></label>
+      </div>
+      <button type="submit" id="run">Run simulation</button>
+    </form>
+    <p id="message" role="alert"></p>
+  </section>
+
+  <section id="results" hidden>
+    <h2>Results</h2>
+    <div class="facts" id="facts"></div>
+    <ul class="notes" id="notes"></ul>
+    <img class="chart" id="chart-distribution" alt="Histogram of final bankrolls">
+    <img class="chart" id="chart-paths" alt="Bankroll over time">
+    <img class="chart" id="chart-kelly" alt="Growth rate against stake">
+  </section>
+
+  <section>
+    <h2>How to read this</h2>
+    <ul>
+      <li><strong>Risk of ruin</strong> is the share of simulated paths whose bankroll <em>ever</em> touched the ruin level, even briefly. Paths keep playing afterwards so you can see where they end up.</li>
+      <li><strong>The Kelly fraction</strong> is the share of your bankroll to stake to grow it fastest in the long run. For a 55% even-money bet it is 10%. It needs you to know the true odds: if you overestimate your edge you are effectively betting a multiple of Kelly.</li>
+      <li><strong>Break-even fraction:</strong> staking more than about <em>twice</em> Kelly makes your bankroll shrink in the long run, even though every single bet is favourable. For the 55% bet the break-even is about 19.9%.</li>
+      <li><strong>Median vs mean:</strong> a bankroll grows by multiples, so a few very lucky paths can drag the average far above what a typical player experiences. The median is the honest "typical" outcome.</li>
+      <li><strong>Drawdown</strong> is the biggest fall from a previous peak. Even full Kelly means painful drawdowns, which is why many people stake half of it.</li>
+    </ul>
+  </section>
+</main>
+<script src="/bankroll.js"></script>
+</body>
+</html>

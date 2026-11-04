@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leaderboards - Edge Lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    main.wide { max-width: 980px; }
+    td.num, th.num { text-align: right; }
+    .luckpos { color: #15803d; }
+    .luckneg { color: #b91c1c; }
+    .controls { margin: 0.5rem 0 1rem; font-size: 0.9rem; }
+    .controls input { width: 5rem; display: inline; }
+  </style>
+</head>
+<body>
+<main class="wide">
+  <h1>Leaderboards</h1>
+  <p class="note">Virtual coins only. No real money is involved.</p>
+  <p><a href="/profile.html">&larr; Your profile</a> &middot; <a href="/skill-vs-luck.html">Why two boards? Skill vs luck</a></p>
+
+  <section>
+    <h2>Skill: cumulative EV</h2>
+    <p class="note" style="color:#444">Ranked by what your decisions were worth on average, ignoring how the dice fell. <strong>EV earned = deal value &minus; regret</strong>: the deal value is luck (what perfect play earns from your cards), the regret is skill (what your mistakes cost). <a href="/skill-vs-luck.html">Explained here.</a></p>
+    <div class="controls">
+      Minimum hands: <input id="min-hands" type="number" min="1" max="10000" value="1">
+      <button id="refresh" type="button" style="margin-top:0">Refresh</button>
+    </div>
+    <table>
+      <thead><tr>
+        <th>#</th><th>Player</th><th class="num">Hands</th><th class="num">EV earned</th><th class="num">Deal value</th>
+        <th class="num">Regret / decision</th><th class="num">Actual coins</th><th class="num">Luck</th><th class="num">Coins rank</th>
+      </tr></thead>
+      <tbody id="skill"></tbody>
+    </table>
+    <p id="skill-empty" hidden>Nobody has any graded hands yet. Finish a match against a bot or another player.</p>
+  </section>
+
+  <section>
+    <h2>Coins: net winnings (luck + skill)</h2>
+    <p class="note" style="color:#444">Ranked by net coins won across finished matches.</p>
+    <table>
+      <thead><tr><th>#</th><th>Player</th><th class="num">Net coins</th><th class="num">Skill rank</th></tr></thead>
+      <tbody id="coins"></tbody>
+    </table>
+    <p id="coins-empty" hidden>No finished matches yet.</p>
+  </section>
+  <p id="message" role="alert"></p>
+</main>
+<script src="/leaderboards.js"></script>
+</body>
+</html>

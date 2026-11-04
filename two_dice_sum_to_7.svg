@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" font-family="system-ui, sans-serif" font-size="13">
+<rect width="760" height="500" fill="white"/>
+<text x="380.0" y="26" text-anchor="middle" font-size="17" font-weight="bold" fill="#111827">Monte Carlo error vs sample size: two dice sum to 7</text>
+<text x="380.0" y="46" text-anchor="middle" fill="#6b7280">exact p = 0.16667, 200 replicates, seed 2026</text>
+<line x1="80.0" y1="60" x2="80.0" y2="430" stroke="#e5e7eb"/>
+<text x="80.0" y="450" text-anchor="middle" fill="#111827">10</text>
+<line x1="296.7" y1="60" x2="296.7" y2="430" stroke="#e5e7eb"/>
+<text x="296.7" y="450" text-anchor="middle" fill="#111827">100</text>
+<line x1="513.3" y1="60" x2="513.3" y2="430" stroke="#e5e7eb"/>
+<text x="513.3" y="450" text-anchor="middle" fill="#111827">1,000</text>
+<line x1="730.0" y1="60" x2="730.0" y2="430" stroke="#e5e7eb"/>
+<text x="730.0" y="450" text-anchor="middle" fill="#111827">10,000</text>
+<line x1="80" y1="430.0" x2="730" y2="430.0" stroke="#e5e7eb"/>
+<text x="72" y="434.0" text-anchor="end" fill="#111827">0.001</text>
+<line x1="80" y1="306.7" x2="730" y2="306.7" stroke="#e5e7eb"/>
+<text x="72" y="310.7" text-anchor="end" fill="#111827">0.01</text>
+<line x1="80" y1="183.3" x2="730" y2="183.3" stroke="#e5e7eb"/>
+<text x="72" y="187.3" text-anchor="end" fill="#111827">0.1</text>
+<line x1="80" y1="60.0" x2="730" y2="60.0" stroke="#e5e7eb"/>
+<text x="72" y="64.0" text-anchor="end" fill="#111827">1</text>
+<rect x="80" y="60" width="650" height="370" fill="none" stroke="#9ca3af"/>
+<polygon points="80.0,137.9 135.3,156.0 189.4,176.0 242.1,193.1 296.7,199.8 350.9,216.0 404.9,229.5 459.1,246.3 513.3,261.3 567.5,279.8 621.7,295.2 675.8,311.9 730.0,318.8 730.0,430.0 675.8,430.0 621.7,430.0 567.5,430.0 513.3,430.0 459.1,430.0 404.9,427.1 350.9,396.4 296.7,365.5 242.1,334.5 189.4,304.5 135.3,430.0 80.0,242.2" fill="#93c5fd" fill-opacity="0.35" stroke="none"/>
+<polyline points="80.0,186.6 135.3,202.4 189.4,217.8 242.1,232.8 296.7,248.3 350.9,263.7 404.9,279.1 459.1,294.5 513.3,310.0 567.5,325.4 621.7,340.8 675.8,356.2 730.0,371.6" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<polyline points="80.0,186.0 135.3,205.1 189.4,218.9 242.1,236.2 296.7,253.9 350.9,265.8 404.9,276.3 459.1,291.2 513.3,305.6 567.5,323.0 621.7,341.8 675.8,354.2 730.0,366.5" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="80.0" cy="186.0" r="3.5" fill="#2563eb"/>
+<circle cx="135.3" cy="205.1" r="3.5" fill="#2563eb"/>
+<circle cx="189.4" cy="218.9" r="3.5" fill="#2563eb"/>
+<circle cx="242.1" cy="236.2" r="3.5" fill="#2563eb"/>
+<circle cx="296.7" cy="253.9" r="3.5" fill="#2563eb"/>
+<circle cx="350.9" cy="265.8" r="3.5" fill="#2563eb"/>
+<circle cx="404.9" cy="276.3" r="3.5" fill="#2563eb"/>
+<circle cx="459.1" cy="291.2" r="3.5" fill="#2563eb"/>
+<circle cx="513.3" cy="305.6" r="3.5" fill="#2563eb"/>
+<circle cx="567.5" cy="323.0" r="3.5" fill="#2563eb"/>
+<circle cx="621.7" cy="341.8" r="3.5" fill="#2563eb"/>
+<circle cx="675.8" cy="354.2" r="3.5" fill="#2563eb"/>
+<circle cx="730.0" cy="366.5" r="3.5" fill="#2563eb"/>
+<text x="405.0" y="482" text-anchor="middle" fill="#111827">number of simulated trials n (log scale)</text>
+<text transform="translate(20 245.0) rotate(-90)" text-anchor="middle" fill="#111827">absolute error |estimate - exact| (log scale)</text>
+<rect x="86" y="62" width="300" height="80" fill="white" fill-opacity="0.9" stroke="#d1d5db"/>
+<line x1="94" y1="74" x2="122" y2="74" stroke="#2563eb" stroke-width="2.5"/>
+<text x="130" y="78" fill="#111827">mean error (slope -0.48)</text>
+<line x1="94" y1="94" x2="122" y2="94" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="130" y="98" fill="#111827">theory 1/sqrt(n) (slope -0.50)</text>
+<rect x="94" y="108" width="28" height="10" fill="#93c5fd" fill-opacity="0.6"/>
+<text x="130" y="118" fill="#111827">5th-95th percentile of error</text>
+<text x="94" y="136" fill="#111827">95% interval coverage: 95.1%</text>
+</svg>

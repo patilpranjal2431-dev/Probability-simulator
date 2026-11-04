@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" font-family="system-ui, sans-serif" font-size="13">
+<rect width="760" height="500" fill="white"/>
+<text x="380.0" y="26" text-anchor="middle" font-size="17" font-weight="bold" fill="#111827">Monte Carlo error vs sample size: one pair in 5-card poker</text>
+<text x="380.0" y="46" text-anchor="middle" fill="#6b7280">exact p = 0.42257, 100 replicates, seed 2026</text>
+<line x1="80.0" y1="60" x2="80.0" y2="430" stroke="#e5e7eb"/>
+<text x="80.0" y="450" text-anchor="middle" fill="#111827">10</text>
+<line x1="296.7" y1="60" x2="296.7" y2="430" stroke="#e5e7eb"/>
+<text x="296.7" y="450" text-anchor="middle" fill="#111827">100</text>
+<line x1="513.3" y1="60" x2="513.3" y2="430" stroke="#e5e7eb"/>
+<text x="513.3" y="450" text-anchor="middle" fill="#111827">1,000</text>
+<line x1="730.0" y1="60" x2="730.0" y2="430" stroke="#e5e7eb"/>
+<text x="730.0" y="450" text-anchor="middle" fill="#111827">10,000</text>
+<line x1="80" y1="430.0" x2="730" y2="430.0" stroke="#e5e7eb"/>
+<text x="72" y="434.0" text-anchor="end" fill="#111827">0.001</text>
+<line x1="80" y1="306.7" x2="730" y2="306.7" stroke="#e5e7eb"/>
+<text x="72" y="310.7" text-anchor="end" fill="#111827">0.01</text>
+<line x1="80" y1="183.3" x2="730" y2="183.3" stroke="#e5e7eb"/>
+<text x="72" y="187.3" text-anchor="end" fill="#111827">0.1</text>
+<line x1="80" y1="60.0" x2="730" y2="60.0" stroke="#e5e7eb"/>
+<text x="72" y="64.0" text-anchor="end" fill="#111827">1</text>
+<rect x="80" y="60" width="650" height="370" fill="none" stroke="#9ca3af"/>
+<polygon points="80.0,128.7 135.3,135.5 189.4,153.6 242.1,159.7 296.7,181.5 350.9,199.2 404.9,211.9 459.1,232.2 513.3,245.3 567.5,263.5 621.7,289.8 664.8,294.4 664.8,430.0 621.7,430.0 567.5,430.0 513.3,430.0 459.1,430.0 404.9,408.9 350.9,419.3 296.7,324.4 242.1,334.0 189.4,285.2 135.3,264.7 80.0,263.1" fill="#93c5fd" fill-opacity="0.35" stroke="none"/>
+<polyline points="80.0,171.5 135.3,187.3 189.4,202.7 242.1,217.7 296.7,233.2 350.9,248.6 404.9,264.0 459.1,279.4 513.3,294.9 567.5,310.3 621.7,325.7 664.8,338.0" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<polyline points="80.0,176.7 135.3,179.5 189.4,198.5 242.1,212.0 296.7,229.8 350.9,251.0 404.9,266.1 459.1,278.0 513.3,296.8 567.5,308.1 621.7,329.2 664.8,336.7" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="80.0" cy="176.7" r="3.5" fill="#2563eb"/>
+<circle cx="135.3" cy="179.5" r="3.5" fill="#2563eb"/>
+<circle cx="189.4" cy="198.5" r="3.5" fill="#2563eb"/>
+<circle cx="242.1" cy="212.0" r="3.5" fill="#2563eb"/>
+<circle cx="296.7" cy="229.8" r="3.5" fill="#2563eb"/>
+<circle cx="350.9" cy="251.0" r="3.5" fill="#2563eb"/>
+<circle cx="404.9" cy="266.1" r="3.5" fill="#2563eb"/>
+<circle cx="459.1" cy="278.0" r="3.5" fill="#2563eb"/>
+<circle cx="513.3" cy="296.8" r="3.5" fill="#2563eb"/>
+<circle cx="567.5" cy="308.1" r="3.5" fill="#2563eb"/>
+<circle cx="621.7" cy="329.2" r="3.5" fill="#2563eb"/>
+<circle cx="664.8" cy="336.7" r="3.5" fill="#2563eb"/>
+<text x="405.0" y="482" text-anchor="middle" fill="#111827">number of simulated trials n (log scale)</text>
+<text transform="translate(20 245.0) rotate(-90)" text-anchor="middle" fill="#111827">absolute error |estimate - exact| (log scale)</text>
+<rect x="86" y="62" width="300" height="80" fill="white" fill-opacity="0.9" stroke="#d1d5db"/>
+<line x1="94" y1="74" x2="122" y2="74" stroke="#2563eb" stroke-width="2.5"/>
+<text x="130" y="78" fill="#111827">mean error (slope -0.51)</text>
+<line x1="94" y1="94" x2="122" y2="94" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="130" y="98" fill="#111827">theory 1/sqrt(n) (slope -0.50)</text>
+<rect x="94" y="108" width="28" height="10" fill="#93c5fd" fill-opacity="0.6"/>
+<text x="130" y="118" fill="#111827">5th-95th percentile of error</text>
+<text x="94" y="136" fill="#111827">95% interval coverage: 94.2%</text>
+</svg>

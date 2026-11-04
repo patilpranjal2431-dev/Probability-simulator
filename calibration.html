@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calibration game - Edge Lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    main.wide { max-width: 900px; }
+    .question { font-size: 1.15rem; line-height: 1.5; }
+    .row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .row input[type=range] { flex: 1; min-width: 220px; margin: 0; }
+    .row input[type=number] { width: 6rem; margin: 0; }
+    .big { font-size: 1.6rem; font-weight: bold; }
+    .happened { color: #15803d; }
+    .didnt { color: #b91c1c; }
+    .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; margin: 1rem 0; }
+    .fact { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 0.5rem 0.7rem; }
+    .fact .v { font-size: 1.25rem; font-weight: bold; }
+    .fact .k { font-size: 0.8rem; color: #555; }
+    img.chart { width: 100%; max-width: 760px; display: block; margin: 0.8rem 0; border: 1px solid #e5e7eb; }
+    td.num, th.num { text-align: right; }
+  </style>
+</head>
+<body>
+<main class="wide">
+  <h1>Calibration game</h1>
+  <p class="note">Virtual coins only. No real money is involved.</p>
+  <p><a href="/profile.html">&larr; Your profile</a> &middot; <a href="/bankroll.html">Bankroll simulator</a></p>
+
+  <section>
+    <h2>How it works</h2>
+    <p>You get a probability question about dice, cards, birthdays or coin flips. <strong>Say how likely you think the event is.</strong> Once you lock in your answer, the computer actually performs the experiment (rolls the dice, deals the cards) and tells you whether the event happened.</p>
+    <p>You are scored with the <strong>Brier score</strong>: the square of the gap between your probability and what happened (1 if it happened, 0 if not). <strong>Lower is better.</strong> Saying 50% every time always scores 0.25. Say 70% and the event happens: 0.09. Say 70% and it does not: 0.49.</p>
+    <p>One experiment is luck, so the game also shows the <em>exact</em> true probability and the noise-free score. Over many questions you learn whether your gut feelings are well <strong>calibrated</strong>: when you say 80%, does it really happen about 80% of the time?</p>
+  </section>
+
+  <section>
+    <h2>Your question</h2>
+    <p class="question" id="question-text">Loading...</p>
+    <div id="answer-form">
+      <div class="row">
+        <input id="slider" type="range" min="0" max="100" step="1" value="50" aria-label="Your probability, as a percentage">
+        <label style="display:inline">Your probability: <input id="number" type="number" min="0" max="100" step="1" value="50"> %</label>
+        <button id="submit" type="button" style="margin-top:0">Lock in my answer</button>
+      </div>
+    </div>
+    <p id="message" role="alert"></p>
+
+    <div id="result" hidden>
+      <p class="big" id="outcome"></p>
+      <p id="what-happened"></p>
+      <div class="facts" id="result-facts"></div>
+      <button id="next" type="button">Next question</button>
+    </div>
+  </section>
+
+  <section id="summary-section" hidden>
+    <h2>Your scores</h2>
+    <div class="facts" id="summary-facts"></div>
+    <p id="advice"></p>
+    <img class="chart" id="chart-brier" alt="Your Brier score over time">
+    <img class="chart" id="chart-reliability" alt="Calibration diagram">
+    <h3>By kind of question</h3>
+    <table>
+      <thead><tr><th>Kind</th><th class="num">Answered</th><th class="num">Average error (you - truth)</th><th class="num">Reliability cost</th></tr></thead>
+      <tbody id="by-kind"></tbody>
+    </table>
+    <p class="note" style="color:#444">A positive error means you tend to guess too high for that kind of question. Reliability cost is the average squared gap to the truth: zero for a perfectly calibrated player.</p>
+  </section>
+</main>
+<script src="/calibration.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skill vs luck - Edge Lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    main.wide { max-width: 760px; }
+    td.num, th.num { text-align: right; }
+    .best { font-weight: bold; }
+    .callout { background: #fef3c7; border-left: 4px solid #d97706; padding: 0.6rem 0.9rem; margin: 1rem 0; }
+    code { background: #f3f4f6; padding: 0 0.25rem; }
+  </style>
+</head>
+<body>
+<main class="wide">
+  <h1>Skill vs luck</h1>
+  <p class="note">Virtual coins only. No real money is involved.</p>
+  <p><a href="/leaderboards.html">&larr; Back to the leaderboards</a> &middot; <a href="/profile.html">Your profile</a></p>
+
+  <section>
+    <h2>Two boards, two questions</h2>
+    <p>After a hand there are two different questions you can ask, and they have different answers.</p>
+    <table>
+      <thead><tr><th>Board</th><th>Question</th><th>Ranked by</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Coins</strong></td><td>What <em>happened</em>?</td><td>Net coins won across finished matches. This is <strong>luck + skill</strong>: the dice and your opponent's hidden value decide it as much as your choices do.</td></tr>
+        <tr><td><strong>Skill</strong></td><td>Were your decisions <em>good</em>?</td><td>Cumulative <strong>EV</strong> (expected value) of the decisions you made. It ignores how the dice happened to fall.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>What "EV" means here</h2>
+    <p>The <strong>EV of a decision</strong> is the average number of chips you would win (or lose) in that hand if you took that action and played well afterwards. Because it is an average over everything the opponent might be holding, one lucky or unlucky card cannot change it.</p>
+    <p><strong>Regret</strong> is the EV of the best action minus the EV of the action you took. It is never negative, and it is exactly zero when you chose a best action.</p>
+    <p>"Best" and "average" need an opponent to be measured against. Everyone is graded against the <em>same fixed reference opponent</em>, so grades are comparable between players:</p>
+    <ul>
+      <li><strong>Dice Duel:</strong> the EV bot. It bets with a better-than-average roll and checks otherwise, and facing a bet it calls exactly when calling beats folding. A bet therefore tells you its roll is probably high.</li>
+      <li><strong>Kuhn poker:</strong> the published Nash equilibrium, where no player can gain by changing strategy.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>A worked example (Dice Duel, ante 10, you hold a 4)</h2>
+    <p>These are exact values from the same code that grades your games.</p>
+    <table>
+      <thead><tr><th>Your action</th><th class="num">EV (chips)</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr class="best"><td>Bet 1</td><td class="num">+1.83</td><td>Best. Everyone calls a bet that small, so you collect a little extra from the dice edge.</td></tr>
+        <tr><td>Check</td><td class="num">+1.67</td><td>Fine: a regret of only 0.17.</td></tr>
+        <tr><td>Bet 49</td><td class="num">-6.50</td><td>Holding a weak-ish hand, you are only called by hands that beat you, and the rest fold.</td></tr>
+        <tr><td>Bet 990 (all-in)</td><td class="num">-328.33</td><td>Regret 330.17. It might win, but on average it costs you.</td></tr>
+      </tbody>
+    </table>
+    <p>The all-in with a 4 is a <em>bad decision</em> whether or not it happens to win. That is what the skill board measures.</p>
+
+    <div class="callout">
+      <strong>A good result can come from a bad decision, and the reverse.</strong> Holding a 5 and betting 990 has an EV of +5.00, exactly the same as checking. But one time in six you lose 1,000 coins, and one time in six you win 1,000. Those swings land on the <em>coins</em> board and leave the <em>skill</em> board unmoved.
+    </div>
+  </section>
+
+  <section>
+    <h2>Luck, made visible</h2>
+    <p>The skill board shows <strong>luck = actual coins &minus; EV earned</strong> for every player. A positive number means results ran better than the decisions deserved; a negative one means worse.</p>
+    <p>For example (made-up numbers, for illustration): over 100 hands, Player A's decisions were worth +120 coins in total, but she actually lost 80, so her luck is <strong>-200</strong> and she ranks higher on skill than on coins. Player B's decisions were worth only +20, but he won 150, so his luck is <strong>+130</strong> and he ranks higher on coins than on skill. Over a long time luck tends towards zero, and the two boards move closer together.</p>
+  </section>
+
+  <section>
+    <h2>The luck of the deal</h2>
+    <p>EV removes the luck of <em>outcomes</em>, but not the luck of <em>which cards you were dealt</em>. Even perfect play earns very different amounts from different hands: at a 1,000-coin buy-in, an opening roll of 1 is worth -8.33 coins to a perfect player and a roll of 6 is worth +338.33. Over a handful of hands, a lucky deal can swamp the difference in skill.</p>
+    <p>So each player's EV splits into two parts:</p>
+    <p style="text-align:center"><strong>EV earned = deal value &minus; regret</strong></p>
+    <ul>
+      <li><strong>Deal value</strong> is what perfect play would have earned from the cards you actually got. It is luck.</li>
+      <li><strong>Regret</strong> is what your mistakes cost. It is skill, and it is zero for a player who always picks a best action, whatever cards they hold.</li>
+    </ul>
+    <p>The skill board is ranked by EV earned, as promised, but it shows both parts. If two players have similar EV earned, the one with the lower <strong>regret per decision</strong> is the one who actually played better. With more hands the luck of the deal averages out and the two views agree.</p>
+  </section>
+
+  <section>
+    <h2>What is and is not counted</h2>
+    <ul>
+      <li>Only decisions <strong>you</strong> made. If the table acted for you (a timeout or a disconnect), those moves are not graded, and a hand containing one does not count towards your EV.</li>
+      <li>Each counted hand contributes the EV of your <strong>last</strong> decision in it, so nothing is counted twice. Regret is added up over every decision.</li>
+      <li>A hand in which you never had a decision (for example, your opponent checked and the hand went straight to showdown) is counted in neither EV nor actual coins, so luck compares like with like.</li>
+      <li>Bots are not on either board.</li>
+      <li>When players have played different numbers of hands, compare <strong>regret per decision</strong>: it does not depend on how many hands, or which cards, a player had.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Limits you should know about</h2>
+    <p>The reference opponent is a <strong>model</strong>, not the truth. If a real opponent bluffs far more than the reference does, a call the grader marks as a mistake might actually have been good against <em>that</em> person. The skill board measures how close your decisions are to the best ones against a fixed standard, which keeps it fair and comparable but means it cannot reward a clever read on one particular player. Small samples are noisy, so look at how many hands a player has.</p>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edge Lab</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <h1>Edge Lab</h1>
+  <p class="note">Virtual coins only. No real money is involved.</p>
+
+  <section>
+    <h2>Log in</h2>
+    <form id="login-form">
+      <label>Username <input name="username" autocomplete="username" required maxlength="32"></label>
+      <label>Password <input name="password" type="password" autocomplete="current-password" required maxlength="128"></label>
+      <button type="submit">Log in</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Register</h2>
+    <form id="register-form">
+      <label>Username (3-32 letters, numbers or _) <input name="username" autocomplete="username" required minlength="3" maxlength="32"></label>
+      <label>Password (at least 8 characters) <input name="password" type="password" autocomplete="new-password" required minlength="8" maxlength="128"></label>
+      <button type="submit">Create account (1,000 coins)</button>
+    </form>
+  </section>
+
+  <p id="message" role="alert"></p>
+</main>
+<script src="/index.js"></script>
+</body>
+</html>

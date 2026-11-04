@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" font-family="system-ui, sans-serif" font-size="13">
+<rect width="760" height="500" fill="white"/>
+<text x="380.0" y="26" text-anchor="middle" font-size="17" font-weight="bold" fill="#111827">Monte Carlo error vs sample size: birthday match among 23 people</text>
+<text x="380.0" y="46" text-anchor="middle" fill="#6b7280">exact p = 0.50730, 200 replicates, seed 2026</text>
+<line x1="80.0" y1="60" x2="80.0" y2="430" stroke="#e5e7eb"/>
+<text x="80.0" y="450" text-anchor="middle" fill="#111827">10</text>
+<line x1="296.7" y1="60" x2="296.7" y2="430" stroke="#e5e7eb"/>
+<text x="296.7" y="450" text-anchor="middle" fill="#111827">100</text>
+<line x1="513.3" y1="60" x2="513.3" y2="430" stroke="#e5e7eb"/>
+<text x="513.3" y="450" text-anchor="middle" fill="#111827">1,000</text>
+<line x1="730.0" y1="60" x2="730.0" y2="430" stroke="#e5e7eb"/>
+<text x="730.0" y="450" text-anchor="middle" fill="#111827">10,000</text>
+<line x1="80" y1="430.0" x2="730" y2="430.0" stroke="#e5e7eb"/>
+<text x="72" y="434.0" text-anchor="end" fill="#111827">0.001</text>
+<line x1="80" y1="306.7" x2="730" y2="306.7" stroke="#e5e7eb"/>
+<text x="72" y="310.7" text-anchor="end" fill="#111827">0.01</text>
+<line x1="80" y1="183.3" x2="730" y2="183.3" stroke="#e5e7eb"/>
+<text x="72" y="187.3" text-anchor="end" fill="#111827">0.1</text>
+<line x1="80" y1="60.0" x2="730" y2="60.0" stroke="#e5e7eb"/>
+<text x="72" y="64.0" text-anchor="end" fill="#111827">1</text>
+<rect x="80" y="60" width="650" height="370" fill="none" stroke="#9ca3af"/>
+<polygon points="80.0,123.2 135.3,142.2 189.4,157.0 242.1,167.0 296.7,181.9 350.9,198.9 404.9,212.6 459.1,224.4 513.3,240.5 567.5,259.4 621.7,281.9 675.8,296.0 730.0,311.0 730.0,430.0 675.8,430.0 621.7,430.0 567.5,423.1 513.3,401.5 459.1,404.8 404.9,387.9 350.9,402.2 296.7,376.7 242.1,323.5 189.4,323.5 135.3,323.5 80.0,323.5" fill="#93c5fd" fill-opacity="0.35" stroke="none"/>
+<polyline points="80.0,170.9 135.3,186.6 189.4,202.0 242.1,217.0 296.7,232.6 350.9,248.0 404.9,263.4 459.1,278.8 513.3,294.2 567.5,309.6 621.7,325.1 675.8,340.5 730.0,355.9" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<polyline points="80.0,168.1 135.3,189.7 189.4,205.5 242.1,215.8 296.7,233.3 350.9,248.4 404.9,260.0 459.1,275.1 513.3,287.9 567.5,305.7 621.7,326.0 675.8,346.2 730.0,354.9" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="80.0" cy="168.1" r="3.5" fill="#2563eb"/>
+<circle cx="135.3" cy="189.7" r="3.5" fill="#2563eb"/>
+<circle cx="189.4" cy="205.5" r="3.5" fill="#2563eb"/>
+<circle cx="242.1" cy="215.8" r="3.5" fill="#2563eb"/>
+<circle cx="296.7" cy="233.3" r="3.5" fill="#2563eb"/>
+<circle cx="350.9" cy="248.4" r="3.5" fill="#2563eb"/>
+<circle cx="404.9" cy="260.0" r="3.5" fill="#2563eb"/>
+<circle cx="459.1" cy="275.1" r="3.5" fill="#2563eb"/>
+<circle cx="513.3" cy="287.9" r="3.5" fill="#2563eb"/>
+<circle cx="567.5" cy="305.7" r="3.5" fill="#2563eb"/>
+<circle cx="621.7" cy="326.0" r="3.5" fill="#2563eb"/>
+<circle cx="675.8" cy="346.2" r="3.5" fill="#2563eb"/>
+<circle cx="730.0" cy="354.9" r="3.5" fill="#2563eb"/>
+<text x="405.0" y="482" text-anchor="middle" fill="#111827">number of simulated trials n (log scale)</text>
+<text transform="translate(20 245.0) rotate(-90)" text-anchor="middle" fill="#111827">absolute error |estimate - exact| (log scale)</text>
+<rect x="86" y="62" width="300" height="80" fill="white" fill-opacity="0.9" stroke="#d1d5db"/>
+<line x1="94" y1="74" x2="122" y2="74" stroke="#2563eb" stroke-width="2.5"/>
+<text x="130" y="78" fill="#111827">mean error (slope -0.50)</text>
+<line x1="94" y1="94" x2="122" y2="94" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="130" y="98" fill="#111827">theory 1/sqrt(n) (slope -0.50)</text>
+<rect x="94" y="108" width="28" height="10" fill="#93c5fd" fill-opacity="0.6"/>
+<text x="130" y="118" fill="#111827">5th-95th percentile of error</text>
+<text x="94" y="136" fill="#111827">95% interval coverage: 95.0%</text>
+</svg>
